@@ -1,70 +1,32 @@
-<<<<<<< HEAD
-# 🚀 Cypress Web Automation Tests  
+# 🚀 QA Automation Tests with Cypress  
 
-This repository contains **Cypress end-to-end (E2E) tests** for web automation, covering **Promo Code Page** and **Saved Searches Page** functionalities.
-
----
-
-## 📌 Project Overview  
-The automation scripts include:  
-✅ **UI tests** (checking page elements and sorting functionality)  
-✅ **API authentication tests**  
-✅ **Custom Cypress commands for reusable actions**  
-✅ **XPath selectors for element targeting**  
-
-I have nearly **two years of experience in manual testing**, working with this platform.  
-Two months ago, I started learning **Cypress automation** on my own, aiming to convert my manual test cases into automated tests.  
-I began with the **simplest page** and am continuously expanding the test coverage. This project is still **a work in progress**.
+This repository contains **Cypress automation tests** for web application testing.  
+The project is a **work in progress**, as I am actively learning and developing my skills in test automation.  
 
 ---
 
-## 📂 Folder Structure  
-📂 cypress
-├── 📂 e2e # Cypress test files (.cy.js)
-│ ├── promoCodePageTests.cy.js # Tests for promo codes
-│ ├── savedSearchesPageTests.cy.js # Tests for saved searches
-├── 📂 resources # Page objects and test data
-│ ├── locators.js # All element selectors
-│ ├── system.js # API endpoints
-│ ├── testData.js # Test data (credentials, promo codes)
-│ ├── Pages # Functions for page interactions
-│ ├── promoCodePage.js
-│ ├── savedSearchesPage.js
-├── 📂 support # Custom Cypress commands
-│ ├── commands.js # API login and reusable functions
-📄 e2e.js # Cypress support file
-📄 cypress.config.js # Cypress configuration
-📄 package.json # Project dependencies
-📄 package-lock.json # Dependency lock file
-📄 README.md # Project documentation
+## 🌱 About This Project  
+I started learning **Cypress** two months ago, and this project is my personal practice to improve my automation skills.  
+Although the project is in its **early stages**, I am constantly improving and expanding it.  
 
+✔ Covers **promo code creation tests** with different user roles.  
+✔ Uses **best practices** such as **Page Object Model** and environment variables.  
+✔ Ensures **test data security** (no credentials stored in the repository).  
+
+I am **highly motivated** to continue learning and developing this project further! 🚀  
 
 ---
 
 ## 🛠️ Technologies Used  
-- **Cypress** – For E2E automation testing  
-- **JavaScript** – Test scripting  
+- **Cypress** – End-to-end testing framework  
+- **JavaScript** – Test scripting language  
 - **Mocha & Chai** – Assertions  
-- **cypress-xpath** – XPath support  
-- **cypress-file-upload** – File upload testing  
+- **XPath Selectors** – For dynamic element handling  
+- **Page Object Model (POM)** – Structured test automation  
 
 ---
-
-## 🚀 Installation & Setup  
-###Clone the Repository  
-
-git clone https://github.com/Eleni-Marinova967/QA-Automation-Tests.git
-cd QA-Automation-Tests
-
-Install Dependencies
-npm install
-
-
-To open the Cypress Test Runner:
-npx cypress open
-
-To run tests in headless mode:
-npx cypress run
+ 
+> ⚠ **Note:** This repository does not contain login credentials or environment variables.  
 
 
 Test Scenarios
@@ -85,7 +47,5 @@ cy.apiLogin(username, password)	- Logs in via API and stores the token in Cypres
  
 🔹 Expand automation coverage to more complex pages  
 🔹 Continue improving my Cypress skills and refining test automation  
-=======
-# QA-Automation-Tests
-Repository for my Cypress end-to-end automation test scripts
->>>>>>> 77546ae59615d6f6dded28548d5841e931a44354
+
+🎉 This project is just the beginning! I am excited to continue improving and learning more in the field of test automation. 🚀
