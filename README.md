@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Cypress Web Automation Tests  
 
 This repository contains **Cypress end-to-end (E2E) tests** for web automation, covering **Promo Code Page** and **Saved Searches Page** functionalities.
@@ -84,3 +85,7 @@ cy.apiLogin(username, password)	- Logs in via API and stores the token in Cypres
  
 🔹 Expand automation coverage to more complex pages  
 🔹 Continue improving my Cypress skills and refining test automation  
+=======
+# QA-Automation-Tests
+Repository for my Cypress end-to-end automation test scripts
+>>>>>>> 77546ae59615d6f6dded28548d5841e931a44354
