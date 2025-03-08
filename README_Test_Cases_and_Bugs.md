@@ -37,3 +37,33 @@ The list below includes **some of the bugs I have found**, demonstrating my abil
 | **Saved searches do not refresh properly** | UI/UX | 1. Save a search query.<br>2. Refresh the page.<br>3. Observe the saved searches list. | Saved searches should remain visible and active. | The search text remains in the input field but is not actively applied. |
 
 📌 **These are just some of the test cases and bugs I have worked on. I continue to expand my knowledge and improve test coverage.** 🚀  
+
+## 📌 Training & Practice Experience  
+🎓 *This section includes test cases and bug reports created during my QA training and practice sessions.*  
+These cover various **functional, UI, and validation scenarios**, helping me develop structured test documentation and improve my analytical skills.  
+
+### **Test Cases from Training**
+
+| **Test Case ID** | **Title/Description** | **Steps** | **Expected Result** | **Pass / Fail** | **Comments** |
+|-----------------|----------------------|----------|----------------------|----------------|-----------|
+| **LP6** | Footer copyright text "TimeWise" should redirect to the Terms of Service page | 1. Open the web application.<br>2. Scroll to the bottom of the page.<br>3. Click on the "TimeWise" text in the footer. | Clicking "TimeWise" should redirect to the Terms of Service page. | **Fail** | It does not open the Terms of Service page. |
+| **UR1** | Last Name field label is incorrect | 1. Navigate to the Register page.<br>2. Check the field labels for First Name, Middle Name, Last Name. | The labels should be correctly assigned. | **Fail** | The Last Name field is labeled as "Middle Name". |
+| **UR9** | Terms of Service checkbox is not mandatory for account creation | 1. Go to the Register form.<br>2. Try submitting the form without checking the Terms of Service checkbox. | An error should appear stating the checkbox must be selected. | **Fail** | The account is created even when the checkbox is not selected. |
+| **UL5** | Clicking "Forgot Password" does not work | 1. Navigate to the Login page.<br>2. Click on the "Forgot Password" link. | The Restore Password page should open. | **Fail** | The button does nothing when clicked. |
+| **UL7** | Register hyperlink does not work | 1. Navigate to the Login page.<br>2. Click on the "Register" hyperlink. | The Register form should appear. | **Fail** | The hyperlink does not work. |
+| **PM2** | Edit Profile button does not work | 1. Navigate to the Profile page.<br>2. Click on the "Edit Profile Info" button. | Clicking the button should open the Edit Profile page. | **Fail** | The button is present but does not work. |
+| **PM5** | Profile edits do not save | 1. Update First Name, Last Name, or Avatar URL.<br>2. Click "Edit". | The profile should be updated successfully. | **Fail** | The changes are not saved. |
+| **TCM1** | Task status update does not reflect in UI | 1. Create a new task.<br>2. Move it to "In Progress".<br>3. Move it to "Done". | The task should appear under the correct board based on its status. | **Pass** | The feature works correctly. |
+| **TCM11** | Task delete button removes the task from the board | 1. Click the "Delete" button on a task. | The task should be deleted and no longer visible. | **Pass** | Tasks are successfully removed. |
+
+### **Bug reports from Training**
+
+| **Bug ID** | **Priority** | **Severity** | **Title** | **Steps to reproduce** | **Expected Result** | **Actual Result** |
+|------------|------------|------------|-----------|----------------------|----------------------|--------------------|
+| **B1** | High | Medium | Clicking "TimeWise" in the footer does not open the Terms of Service page | 1. Open the web application.<br>2. Scroll to the bottom.<br>3. Click on "TimeWise" in the footer. | It should redirect to the Terms of Service page. | It is clickable but does nothing. |
+| **B3** | High | Critical | Terms of Service checkbox is not required for account creation | 1. Navigate to the Register page.<br>2. Try submitting the form without checking the checkbox. | An error should appear requiring selection. | The account is created without accepting the terms. |
+| **B5** | High | High | User can register without entering a middle name | 1. Navigate to the Register page.<br>2. Fill some fields but leave Middle Name empty.<br>3. Submit the form. | All fields should be required. | The account is created successfully without a middle name. |
+| **B7** | High | Critical | "Forgot Password" button does not work | 1. Navigate to the Login page.<br>2. Click "Forgot Password". | The Reset Password page should open. | Nothing happens. |
+| **B9** | High | High | Edit Profile button does not work | 1. Navigate to the Profile page.<br>2. Click on the "Edit Profile" button. | The user should be redirected to the Edit Profile page. | The button does nothing. |
+| **B10** | High | Critical | Profile updates do not save | 1. Edit the First Name, Last Name, or Avatar URL.<br>2. Click "Edit". | The profile changes should be saved. | The changes are lost after page reload. |
+
