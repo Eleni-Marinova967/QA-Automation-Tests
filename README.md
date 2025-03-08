@@ -39,10 +39,6 @@ Check if Heading and Table exist
 Validate Sorting Functionality (ID, Device ID, Name, Search Text, Category, Creation Date, Last Change Date, Status)
 
 
-🔹 Custom Cypress Commands (commands.js)
-
-cy.apiLogin(username, password)	- Logs in via API and stores the token in Cypress.env()
-
 ## 🏗️ Future Improvements  
  
 🔹 Expand automation coverage to more complex pages  
