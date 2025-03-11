@@ -590,6 +590,9 @@ export const promoCodePageNameColumnSort = () => {
         return a.localeCompare(b, 'bg', { numeric: true, sensitivity: 'base' });
     };
 
+    // Reverse ASC for DESC
+    const customSortDesc = (a, b) => customSortAsc(b, a);
+
     // Extracts the 'name' values from the API response.
     const extractNameColumnValues = (responseBody) => {
         const filtered = responseBody.filter(row => row.name);
@@ -666,8 +669,7 @@ export const promoCodePageNameColumnSort = () => {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Test to see if "New Promo Code" button exist
 export const promoCodePageNewPCButtonCheck = () => {
-    cy.wait(2000);
-    cy.get(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON).should('exist');
+    cy.xpath(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON_XPATH).should('exists');
 };
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -682,45 +684,45 @@ export const createPromoCodeAsAdmin = () => {
         .should("exist");
 
     // Enter promo code name
-    cy.get(locators.NEW_PROMO_CODE_PAGE_NAME_INPUT)
-        .type(testData.NEW_PROMO_CODE_NAME);
+    cy.get(locators.NEW_PROMO_CODE_NAME)
+        .type(testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
 
     // Enter promo code conditions
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONS_INPUT)
-        .type(testData.NEW_PROMO_CODE_CONDITIONS);
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONS)
+        .type(testData.NEW_PROMO_CODE_CONDITIONS_INPUT);
 
     // Select discount type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE);
+        .select(testData.NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED);
 
     // Add a product page link
-    cy.get(locators.NEW_PROMO_CODE_PAGE_LINK_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_LINK)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_LINK);
+        .type(testData.NEW_PROMO_CODE_PAGE_LINK_INPUT);
 
     // Select promo code type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_TYPE);
+        .select(testData.NEW_PROMO_CODE_TYPE_LIKED_OFFERS);
 
     // Enter conditional number to receive the promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONAL_NUMBER)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER);
+        .type(testData.NEW_PROMO_CODE_CONDITIONAL_NUMBER_INPUT);
 
     // Enter discount amount
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_DISCOUNT);
+        .type(testData.NEW_PROMO_CODE_DISCOUNT_INPUT);
 
     // Click the "Save" button
-    cy.get(locators.NEW_PROMO_CODE_PAGE_SAVE_BUTTON)
+    cy.get(locators.NEW_PROMO_CODE_SAVE_BUTTON)
         .scrollIntoView()
         .should('be.visible')
         .click();
@@ -730,7 +732,7 @@ export const createPromoCodeAsAdmin = () => {
 
     // Verify that the first row in the table contains the newly created promo code
     cy.xpath(locators.PROMO_CODE_PAGE_COLUMN_NAME_XPATH).first()
-        .should("contain.text", testData.NEW_PROMO_CODE_NAME);
+        .should("contain.text", testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
 };
 
 
@@ -742,51 +744,56 @@ export const createPromoCodeWithSingleTypeAndDate = () => {
     cy.get(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON).click();
 
     // Validate that we are on the correct page
-    cy.xpath(locators.NEW_PROMO_CODE_PAGE_HEADING_XPATH).should('exist');
+    cy.xpath(locators.NEW_PROMO_CODE_PAGE_HEADING_XPATH)
+        .should('exist');
 
     // Type a name for the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_NAME_INPUT).type(testData.NEW_PROMO_CODE_NAME);
+    cy.get(locators.NEW_PROMO_CODE_NAME)
+        .type(testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
 
     // Type the conditions for the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONS_INPUT).type(testData.NEW_PROMO_CODE_CONDITIONS);
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONS)
+        .type(testData.NEW_PROMO_CODE_CONDITIONS_INPUT);
 
     // Uncheck all types except one
-    cy.get(locators.NEW_PROMO_CODE_PAGE_ONLINE_TYPE).click();   // Uncheck Online
-    cy.get(locators.NEW_PROMO_CODE_PAGE_LOCATION_TYPE).click(); // Uncheck Location
-    cy.get(locators.NEW_PROMO_CODE_PAGE_FAST_ORDER_TYPE)
+    cy.get(locators.NEW_PROMO_CODE_ONLINE_TYPE)
+        .click();   // Uncheck Online
+    cy.get(locators.NEW_PROMO_CODE_LOCATION_TYPE)
+        .click(); // Uncheck Location
+    cy.get(locators.NEW_PROMO_CODE_FAST_ORDER_TYPE)
         .scrollIntoView()
         .should('be.visible')
         .click(); // Uncheck Fast Order
 
     // Select the discount type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE);
+        .select(testData.NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED);
 
     // Select the promo code type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_TYPE);
+        .select(testData.NEW_PROMO_CODE_TYPE_LIKED_OFFERS);
 
     // Enter the conditional number to receive the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONAL_NUMBER)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER);
+        .type(testData.NEW_PROMO_CODE_CONDITIONAL_NUMBER_INPUT);
 
     // Select start and end dates
     selectDateAdmin(); 
 
     // Enter the discount amount
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_DISCOUNT);
+        .type(testData.NEW_PROMO_CODE_DISCOUNT_INPUT);
 
     // Click the "Save" button
-    cy.get(locators.NEW_PROMO_CODE_PAGE_SAVE_BUTTON)
+    cy.get(locators.NEW_PROMO_CODE_SAVE_BUTTON)
         .scrollIntoView()
         .should('be.visible')
         .click();
@@ -796,7 +803,7 @@ export const createPromoCodeWithSingleTypeAndDate = () => {
 
     // Verify that the first row in the table contains the newly created promo code
     cy.xpath(locators.PROMO_CODE_PAGE_COLUMN_NAME_XPATH).first()
-        .should("contain.text", testData.NEW_PROMO_CODE_NAME);
+        .should("contain.text", testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
 };
 
 
@@ -805,54 +812,58 @@ export const createPromoCodeWithSingleTypeAndDate = () => {
 
 export const createPromoCodeWithUserTypeAndDate = () => {
     // Click on "New promo code" button
-    cy.get(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON).click();
+    cy.get(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON)
+        .click();
 
     // Validate that we are on the correct page
-    cy.xpath(locators.NEW_PROMO_CODE_PAGE_HEADING_XPATH).should('exist');
+    cy.xpath(locators.NEW_PROMO_CODE_PAGE_HEADING_XPATH)
+        .should('exist');
 
     // Type a name for the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_NAME_INPUT).type(testData.NEW_PROMO_CODE_NAME);
+    cy.get(locators.NEW_PROMO_CODE_NAME)
+        .type(testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
 
     // Type the conditions for the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONS_INPUT).type(testData.NEW_PROMO_CODE_CONDITIONS);
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONS)
+        .type(testData.NEW_PROMO_CODE_CONDITIONS_INPUT);
 
     // Uncheck all types except one
-    cy.get(locators.NEW_PROMO_CODE_PAGE_ONLINE_TYPE).click();   // Uncheck Online
-    cy.get(locators.NEW_PROMO_CODE_PAGE_LOCATION_TYPE).click(); // Uncheck Location
-    cy.get(locators.NEW_PROMO_CODE_PAGE_FAST_ORDER_TYPE)
+    cy.get(locators.NEW_PROMO_CODE_ONLINE_TYPE).click();   // Uncheck Online
+    cy.get(locators.NEW_PROMO_CODE_LOCATION_TYPE).click(); // Uncheck Location
+    cy.get(locators.NEW_PROMO_CODE_FAST_ORDER_TYPE)
         .scrollIntoView()
         .should('be.visible')
         .click(); // Uncheck Fast Order
 
     // Select the discount type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE);
+        .select(testData.NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED);
 
     // Select the promo code type
-    cy.get(locators.NEW_PROMO_CODE_PAGE_TYPE_SELECT)
+    cy.get(locators.NEW_PROMO_CODE_TYPE_SELECT)
         .scrollIntoView()
         .should('be.visible')
-        .select(testData.NEW_PROMO_CODE_PAGE_TYPE);
+        .select(testData.NEW_PROMO_CODE_TYPE_LIKED_OFFERS);
 
     // Enter the conditional number to receive the new promo code
-    cy.get(locators.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONAL_NUMBER)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER);
+        .type(testData.NEW_PROMO_CODE_CONDITIONAL_NUMBER_INPUT);
 
     // Select start and end dates (using user date function)
     selectDateUser(); 
 
     // Enter the discount amount
-    cy.get(locators.NEW_PROMO_CODE_PAGE_DISCOUNT_INPUT)
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT)
         .scrollIntoView()
         .should('be.visible')
-        .type(testData.NEW_PROMO_CODE_PAGE_DISCOUNT);
+        .type(testData.NEW_PROMO_CODE_DISCOUNT_INPUT);
 
     // Click the "Save" button
-    cy.get(locators.NEW_PROMO_CODE_PAGE_SAVE_BUTTON)
+    cy.get(locators.NEW_PROMO_CODE_SAVE_BUTTON)
         .scrollIntoView()
         .should('be.visible')
         .click();
@@ -862,5 +873,70 @@ export const createPromoCodeWithUserTypeAndDate = () => {
 
     // Verify that the first row in the table contains the newly created promo code
     cy.xpath(locators.PROMO_CODE_PAGE_COLUMN_NAME_XPATH).first()
-        .should("contain.text", testData.NEW_PROMO_CODE_NAME);
+        .should("contain.text", testData.NEW_PROMO_CODE_VALID_NAME_INPUT);
+};
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Function to create a new promo code using different test parameters.
+ * 
+ * @param {string} userType - Type of user ("admin" or "user").
+ * @param {string} name - Name of the promo code.
+ * @param {string} conditions - Conditions for the promo code.
+ * @param {string} discountType - Type of discount ("PERCENTAGE_DISCOUNT" or "FIXED_DISCOUNT").
+ * @param {string} discountValue - Value of the discount.
+ * @param {string} promoType - Type of promo code ("VIEWED_OFFERS" or "LIKED_OFFERS").
+ * @param {string} conditionalNumber - Required number of actions to activate the promo code.
+ * @param {boolean} includeLink - Whether to include a product link.
+ */
+export const createPromoCode = (userType, name, conditions, discountType, discountValue, promoType, conditionalNumber, includeLink) => {
+    // Login as admin or user
+    if (userType === "admin") {
+        LoginAdmin();
+    } else {
+        LoginUser();
+    }
+
+    navigateToPromoCodePage();
+
+    // Click on "New promo code" button
+    cy.get(locators.PROMO_CODE_PAGE_NEW_PC_BUTTON).click();
+
+    // Enter promo code details
+    cy.get(locators.NEW_PROMO_CODE_NAME).type(name);
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONS).type(conditions);
+
+    // Select discount type and enter discount value
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT_TYPE_SELECT).select(discountType);
+    cy.get(locators.NEW_PROMO_CODE_DISCOUNT).type(discountValue);
+
+    // Select promo type (Liked or Viewed)
+    cy.get(locators.NEW_PROMO_CODE_TYPE_SELECT).select(promoType);
+
+    // Enter conditional number (mandatory field)
+    cy.get(locators.NEW_PROMO_CODE_CONDITIONAL_NUMBER).type(conditionalNumber);
+
+    // Add link if required
+    if (includeLink) {
+        cy.get(locators.NEW_PROMO_CODE_LINK).type(testData.NEW_PROMO_CODE_PAGE_LINK_INPUT);
+    }
+
+    // Select dates based on user type
+    if (userType === "admin") {
+        selectDateAdmin();
+    } else {
+        selectDateUser();
+    }
+
+    // Click "Save" button
+    cy.get(locators.NEW_PROMO_CODE_SAVE_BUTTON).click();
+
+    // Wait for the promo code table to load
+    cy.xpath(locators.PROMO_CODE_PAGE_TABLE_XPATH).should("be.visible").wait(2000);
+
+    // Verify that the created promo code appears in the table
+    cy.xpath(locators.PROMO_CODE_PAGE_COLUMN_NAME_XPATH).first().invoke("text").then((tableName) => {
+        expect(tableName.trim()).to.contain(name);
+    });
 };

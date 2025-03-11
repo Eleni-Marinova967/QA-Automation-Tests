@@ -82,3 +82,59 @@ describe('Test to see if the Heading And the Table of the Promo Code Page exist'
     pcp.createPromoCodeWithUserTypeAndDate();
   })
  })
+
+ //============================================== PAIR WISE TEST CASES ==============================================================
+const pairwiseTestCases = [
+  {
+      testID: "TC-1",
+      discountType: testData.NEW_PROMO_CODE_DISCOUNT_TYPE_PERCENTAGE,
+      promoType: testData.NEW_PROMO_CODE_TYPE_VIEWED_OFFERS,
+      includeLink: true,
+      selectionType: [testData.NEW_PROMO_CODE_ONLINE_TYPE]
+  },
+  {
+      testID: "TC-2",
+      discountType: testData.NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED,
+      promoType: testData.NEW_PROMO_CODE_TYPE_LIKED_OFFERS,
+      includeLink: false,
+      selectionType: [testData.NEW_PROMO_CODE_LOCATION_TYPE]
+  },
+  {
+      testID: "TC-3",
+      discountType: testData.NEW_PROMO_CODE_DISCOUNT_TYPE_PERCENTAGE,
+      promoType: testData.NEW_PROMO_CODE_TYPE_VIEWED_OFFERS,
+      includeLink: true,
+      selectionType: [testData.NEW_PROMO_CODE_PHONE_TYPE]
+  },
+  {
+      testID: "TC-4",
+      discountType: testData.NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED,
+      promoType: testData.NEW_PROMO_CODE_TYPE_LIKED_OFFERS,
+      includeLink: false,
+      selectionType: [testData.NEW_PROMO_CODE_FAST_ORDER_TYPE]
+  },
+  {
+      testID: "TC-5",
+      discountType: testData.NEW_PROMO_CODE_DISCOUNT_TYPE_PERCENTAGE,
+      promoType: testData.NEW_PROMO_CODE_TYPE_VIEWED_OFFERS,
+      includeLink: true,
+      selectionType: [testData.NEW_PROMO_CODE_ONLINE_TYPE, testData.NEW_PROMO_CODE_LOCATION_TYPE]
+  }
+];
+
+describe("Pairwise Testing for Promo Code Creation", () => {
+  pairwiseTestCases.forEach((testCase) => {
+      it(`${testCase.testID}: Create Promo Code with ${testCase.discountType}, ${testCase.promoType}, ${testCase.selectionType.join(", ")}`, () => {
+          pcp.createPromoCode(
+              "admin",
+              testData.NEW_PROMO_CODE_VALID_NAME_INPUT,
+              testData.NEW_PROMO_CODE_CONDITIONS_INPUT,
+              testCase.discountType,
+              testData.NEW_PROMO_CODE_DISCOUNT_INPUT,
+              testCase.promoType,
+              testData.NEW_PROMO_CODE_CONDITIONAL_NUMBER_INPUT,
+              testCase.includeLink
+          );
+      });
+  });
+});

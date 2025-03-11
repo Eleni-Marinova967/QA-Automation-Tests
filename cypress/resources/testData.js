@@ -13,13 +13,20 @@ const endDateUser = calculatePCDateTestData(26);
 const startDateAdmin = calculatePCDateTestData(-2);
 const endDateAdmin = calculatePCDateTestData(23);
 
-export const NEW_PROMO_CODE_NAME = 'TEST_AUTOMATION';
-export const NEW_PROMO_CODE_CONDITIONS = 'This is an automated test to create a Promo Code';
-export const NEW_PROMO_CODE_PAGE_LINK = 'https://www.youtube.com/watch?v=u8vMu7viCm8&t=52s';
-export const NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE = "FIXED_DISCOUNT";
-export const NEW_PROMO_CODE_PAGE_TYPE = "X_LIKED_OFFERS";
-export const NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER = "5";
-export const NEW_PROMO_CODE_PAGE_DISCOUNT = "35";
+export const NEW_PROMO_CODE_VALID_NAME_INPUT = 'TEST_AUTOMATION';
+
+export const NEW_PROMO_CODE_CONDITIONS_INPUT = 'This is an automated test to create a Promo Code';
+export const NEW_PROMO_CODE_PAGE_LINK_INPUT = 'https://www.youtube.com/watch?v=u8vMu7viCm8&t=52s';
+
+export const NEW_PROMO_CODE_DISCOUNT_TYPE_FIXED = "FIXED_DISCOUNT";
+export const NEW_PROMO_CODE_DISCOUNT_TYPE_PERCENTAGE = "PERCENTAGE_DISCOUNT";
+
+export const NEW_PROMO_CODE_TYPE_LIKED_OFFERS = "X_LIKED_OFFERS";
+export const NEW_PROMO_CODE_TYPE_VIEWED_OFFERS = "X_VIEWED_OFFERS";
+
+export const NEW_PROMO_CODE_CONDITIONAL_NUMBER_INPUT = "5";
+
+export const NEW_PROMO_CODE_DISCOUNT_INPUT = "35";
 
 export const USER_PROMO_CODE_START_DATE = `${startDateUser.day}/${startDateUser.month}/${startDateUser.year}`;
 export const USER_PROMO_CODE_END_DATE = `${endDateUser.day}/${endDateUser.month}/${endDateUser.year}`;

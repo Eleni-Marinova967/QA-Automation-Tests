@@ -46,21 +46,21 @@ const promoEndDateAdminLocators = calculatePCDateLocators(2);
 
 export const NEW_PROMO_CODE_PAGE_HEADING_XPATH = '//*[@id="root"]/main/div[2]/div/div/h3[contains(text(),"New promo code")]';
 
-export const NEW_PROMO_CODE_PAGE_NAME_INPUT = 'input[name="name"]';
-export const NEW_PROMO_CODE_PAGE_CONDITIONS_INPUT = 'textarea[name="conditions"]';
+export const NEW_PROMO_CODE_NAME = 'input[name="name"]';
+export const NEW_PROMO_CODE_CONDITIONS = 'textarea[name="conditions"]';
 
-export const NEW_PROMO_CODE_PAGE_ONLINE_TYPE = 'input[name="onlineType"]';
-export const NEW_PROMO_CODE_PAGE_PHONE_TYPE = 'input[name="phoneType"]';
-export const NEW_PROMO_CODE_PAGE_LOCATION_TYPE = 'input[name="locationType"]';
-export const NEW_PROMO_CODE_PAGE_FAST_ORDER_TYPE = 'input[name="fastOrderType"]';
+export const NEW_PROMO_CODE_ONLINE_TYPE = 'input[name="onlineType"]';
+export const NEW_PROMO_CODE_PHONE_TYPE = 'input[name="phoneType"]';
+export const NEW_PROMO_CODE_LOCATION_TYPE = 'input[name="locationType"]';
+export const NEW_PROMO_CODE_FAST_ORDER_TYPE = 'input[name="fastOrderType"]';
 
-export const NEW_PROMO_CODE_PAGE_DISCOUNT_TYPE_SELECT = 'select[name="discountType"]';
-export const NEW_PROMO_CODE_PAGE_LINK_INPUT = 'input[name="linkToProducts"]';
-export const NEW_PROMO_CODE_PAGE_TYPE_SELECT = 'select[name="type"]';
-export const NEW_PROMO_CODE_PAGE_CONDITIONAL_NUMBER_INPUT = 'input[name="conditionalNumber"]';
-export const NEW_PROMO_CODE_PAGE_DISCOUNT_INPUT ='input[name="discount"]';
+export const NEW_PROMO_CODE_DISCOUNT_TYPE_SELECT = 'select[name="discountType"]';
+export const NEW_PROMO_CODE_LINK = 'input[name="linkToProducts"]';
+export const NEW_PROMO_CODE_TYPE_SELECT = 'select[name="type"]';
+export const NEW_PROMO_CODE_CONDITIONAL_NUMBER = 'input[name="conditionalNumber"]';
+export const NEW_PROMO_CODE_DISCOUNT ='input[name="discount"]';
 
-export const NEW_PROMO_CODE_PAGE_SAVE_BUTTON = 'button[type="submit"]';
+export const NEW_PROMO_CODE_SAVE_BUTTON = 'button[type="submit"]';
 
 export const USER_PROMO_CODE_START_DATE_INPUT = `input[value="${promoStartDateUserLocators}"]`;
 export const USER_PROMO_CODE_END_DATE_INPUT = `input[value="${promoEndDateUserLocators}"]`;
