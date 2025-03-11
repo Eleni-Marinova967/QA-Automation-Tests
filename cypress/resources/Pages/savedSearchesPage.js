@@ -59,7 +59,7 @@ export const savedSearchesPageIDColumnSort = () => {
     //const customSortDesc = (a, b) => b.localeCompare(a);
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should("have.text", "Saved searches").click();
@@ -123,7 +123,7 @@ export const savedSearchesPageDeviceIDColumnSort = () => {
     const customSortDesc = (a, b) => b.localeCompare(a);
 
     // Intercept API request for saved searches (we will use this data only once)
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should("have.text", "Saved searches").click();
@@ -184,7 +184,7 @@ export const savedSearchesPageNameColumnSort = () => {
     const customSortDesc = (a, b) => b.localeCompare(a);
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should("have.text", "Saved searches").click();
@@ -257,7 +257,7 @@ export const savedSearchesPageSearchTextColumnSort = () => {
     const customSortDesc = (a,b) => b.localeCompare(a);
 
      // Intercept API request for saved searches
-    cy.intercept ('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept ('GET', 'API').as('getSavedSearches');
 
      // Navigate to the Saved Searches page and wait for the API response
     cy.xpath (locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should('have.text','Saved searches').click();
@@ -337,7 +337,7 @@ export const savedSearchesPageCategoryColumnSort = () => {
     const customSortDesc = (a, b) => b.localeCompare(a);
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should('have.text', 'Saved searches').click();
@@ -422,7 +422,7 @@ export const savedSearchesPageCreationDateColumnSort = () => {
     };
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should('have.text', 'Saved searches').click();
@@ -503,7 +503,7 @@ export const savedSearchesPageLastChangeDateColumnSort = () => {
     };
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should('have.text', 'Saved searches').click();
@@ -580,7 +580,7 @@ export const savedSearchesPageStatusColumnSort = () => {
     const customSortDesc = (a, b) => b.localeCompare(a);
 
     // Intercept API request for saved searches
-    cy.intercept('GET', '**/api/v1/savedSearch/admin').as('getSavedSearches');
+    cy.intercept('GET', 'API').as('getSavedSearches');
 
     // Navigate to the Saved Searches page and wait for the API response
     cy.xpath(locators.HEADER_SAVED_SEARCHES_MENU_XPATH).should("have.text", "Saved searches").click();
